@@ -1,0 +1,209 @@
+/* ==========================================================================
+   Variables, reset & base (réduit)
+   ========================================================================== */
+
+:root{
+  /* Palette minimale */
+  --bg: #121212;
+  --bg-elev-1: #161616;
+  --bg-elev-2: #1b1b1b;
+  --bg-elev-3: #202020;
+  --text: #f0f0f0;
+  --text-muted: #cfcfcf;
+  --text-soft: #bdbdbd;
+  --primary: #4A90E2;
+  --border: #2a2a2a;
+  --shadow: rgba(0,0,0,.5);
+
+  /* Échelle typo & radius */
+  --h1: clamp(2rem, 3.5vw, 3rem);
+  --h2: clamp(1.6rem, 2.8vw, 2.2rem);
+  --h3: clamp(1.2rem, 2.2vw, 1.5rem);
+  --radius: 12px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body{
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3{
+  color: #fff;
+  line-height: 1.25;
+  margin: 0 0 .5rem;
+}
+h1{ font-size: var(--h1); }
+h2{ font-size: var(--h2); text-align:center; margin-bottom: 1.25rem; }
+h3{ font-size: var(--h3); margin-top: 1.25rem; margin-bottom: .75rem; }
+
+p{ margin: 0 0 1rem; color: var(--text-muted); }
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+a:hover{ color: var(--primary); }
+
+/* Focus accessible (unique) */
+:focus-visible{
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Réduction des animations si préférence utilisateur */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Containers */
+.container{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero{
+  background: radial-gradient(1200px 600px at 50% -10%, #222 0%, #161616 60%, #121212 100%);
+  padding: 80px 20px 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.hero .hero-content h1{ margin-bottom: 10px; }
+.hero .hero-content p{ font-size: 1.1rem; color: var(--text-soft); }
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section{
+  padding: 56px 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  animation: fadeIn .5s ease-in-out both;
+}
+.section:nth-of-type(even){ background: var(--bg-elev-1); }
+
+@keyframes fadeIn{
+  from{ opacity: 0; transform: translateY(12px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Grilles & Cartes
+   ========================================================================== */
+
+.skills-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.skill-card{
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+}
+.skill-card:hover{
+  background: var(--bg-elev-3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px var(--shadow);
+  border-color: #323232;
+}
+.skill-card p{ color: var(--text-muted); }
+
+/* ==========================================================================
+   Projets
+   ========================================================================== */
+
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.project-card{
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease, border-color .25s ease;
+  cursor: pointer;
+}
+.project-card:hover{
+  transform: translateY(-6px);
+  background: var(--bg-elev-3);
+  box-shadow: 0 12px 24px var(--shadow);
+  border-color: #343434;
+}
+.project-card img{
+  width: 96px; height: 96px; object-fit: contain; filter: brightness(.95);
+}
+.project-card h3{ font-size: 1.25rem; margin-bottom: 4px; }
+.project-card p{ font-size: .95rem; color: var(--text-soft); }
+
+/* ================================
+   Harmonisation avec page DBOmics
+   ================================ */
+
+/* Typo plus douce pour les paragraphes */
+p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Titre de section plus stylé */
+.section h2 {
+  font-weight: 700;
+  color: var(--primary);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Accent plus doux pour les projets */
+.project-card h3 {
+  color: var(--primary);
+}
+
+.project-card:hover h3 {
+  color: #69b3ff;
+}
+
+.skill-card strong {
+  color: var(--primary);
+}
+
+.skill-card:hover strong {
+  color: #69b3ff;
+}
