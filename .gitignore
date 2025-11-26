@@ -1,0 +1,30 @@
+# =====================
+# IntelliJ IDEA
+# =====================
+
+# Fichiers de configuration du projet IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Node / Web (si tu as du JS)
+node_modules/
+
+# Build
+dist/
+build/
+
+# Configuration locale
+*.env
