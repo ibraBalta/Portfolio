@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio de Ibrahim Balta, étudiant en informatique. Projets R Shiny, Administration système et Développement.">
-    
+
     <title>Portfolio | Ibrahim Balta</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header id="header">
-        <div class="logo">IBRAHIM<span class="dot">.</span></div>
+        <div class="logo"><a href="#hero">IBRAHIM<span class="dot">.</span></a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="#hero">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
+                <li><a href="#about" class="btn-nav">À propos</a></li>
+                <li><a href="#skills" class="btn-nav">Compétences</a></li>
+                <li><a href="#projects" class="btn-nav">Projets</a></li>
                 <li><a href="#contact" class="btn-nav">Contact</a></li>
             </ul>
             <div class="burger">
@@ -52,9 +51,9 @@
             <div class="about-text">
                 <p>Passionné par les technologies numériques, je développe mes savoir-faire à travers des projets concrets et académiques.</p>
                 <p>Mon objectif est de créer des outils performants tout en assurant une expérience utilisateur fluide.</p>
-                
+
                 <p class="fun-fact">🚀 Toujours à la recherche de nouveaux défis techniques.</p>
-                
+
                 <a href="assets/Ibrahim_BALTA_CV.pdf" target="_blank" class="btn-download">Télécharger mon CV</a>
             </div>
         </div>
@@ -65,7 +64,7 @@
             <h2>Mes Compétences</h2>
         </div>
         <div class="skills-grid">
-            
+
             <div class="skill-card">
                 <div class="icon">🛠️</div>
                 <h3>Réaliser</h3>
@@ -110,7 +109,7 @@
             <h2>Mes Projets</h2>
         </div>
         <div class="projects-grid">
-                        
+
             <article class="project-card">
                 <div class="card-image">
                     <img src="assets/Logo_DBOmics.png" alt="DBOmics">
@@ -146,26 +145,92 @@
 
     <section id="contact">
         <div class="section-title">
-            <h2>Contact</h2>
+            <h2>Me Contacter</h2>
         </div>
-        
-        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <p style="margin-bottom: 2rem; color: #ccc; font-size: 1.1rem;">
-                Vous souhaitez échanger sur un projet ou une opportunité ?<br>
-                Retrouvez-moi directement sur les plateformes suivantes :
-            </p>
-            
-            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                <a href="mailto:ton.email@exemple.com" class="btn-secondary" style="text-decoration: none;">
-                    📧 M'envoyer un Email
-                </a>
-                <a href="#" target="_blank" class="btn-secondary" style="text-decoration: none;">
-                    🔗 LinkedIn
-                </a>
-                <a href="#" target="_blank" class="btn-secondary" style="text-decoration: none;">
-                    🐙 GitHub
-                </a>
+
+        <div class="contact-wrapper">
+
+            <form class="contact-form" action="#" method="POST">
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="nom">Nom <span class="required">*</span></label>
+                        <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
+                    </div>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="nom@exemple.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">Téléphone</label>
+                        <input type="tel" id="tel" name="tel" placeholder="06 12 34 56 78">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="objet">Objet <span class="required">*</span></label>
+                    <input type="text" id="objet" name="objet" required placeholder="Sujet de votre message">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message <span class="required">*</span></label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Dites-m'en plus sur votre projet..."></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="rgpd" name="rgpd" required>
+                    <label for="rgpd" class="rgpd-label">
+                        En soumettant ce formulaire, j'accepte que mes données personnelles soient utilisées pour me recontacter. Aucun autre traitement ne sera effectué avec mes informations.
+                        <a href="#">Politique de confidentialité</a>.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary full-width">Envoyer le message</button>
+            </form>
+
+            <div class="contact-info-box">
+                <h3>Mes Coordonnées</h3>
+                <p class="contact-intro">
+                    Une question ou un projet ? Retrouvez-moi ici ou remplissez le formulaire.
+                </p>
+
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <div>
+                        <h4>Localisation</h4>
+                        <p>90000 Belfort, France</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">📧</span>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:ibrahimbalta@outlook.fr">ibrahimbalta@outlook.fr</a></p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <div>
+                        <h4>Téléphone</h4>
+                        <p><a href="tel:+33782213860">07 82 21 38 60</a></p>
+                    </div>
+                </div>
+
+                <div class="social-links-contact">
+                    <a href="https://www.linkedin.com/in/ibrahim-balta-3110aa227/" target="_blank" class="btn-icon">LinkedIn</a>
+                    <a href="https://github.com/ibraBalta" target="_blank" class="btn-icon">GitHub</a>
+                </div>
             </div>
+
         </div>
     </section>
 
