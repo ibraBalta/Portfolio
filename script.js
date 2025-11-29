@@ -39,13 +39,38 @@ navSlide();
 
 // Gestion basique de l'envoi du formulaire (pour éviter le rechargement de page par défaut)
 const contactForm = document.querySelector('.contact-form');
-if(contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Empêche l'envoi réel pour la démo
-        alert("Merci pour votre message ! (Ceci est une démo, le formulaire n'est pas relié à un serveur)");
-        contactForm.reset();
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // empêche le rechargement par défaut
+
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: contactForm.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Vider tous les champs du formulaire
+                contactForm.reset();
+
+                // Rediriger vers la page de remerciement
+                window.location.href = "https://formspree.io/thanks?language=fr";
+            } else {
+                alert("Oups ! Une erreur est survenue. Veuillez réessayer.");
+            }
+
+        } catch (error) {
+            alert("Oups ! Une erreur est survenue. Veuillez réessayer.");
+        }
     });
 }
+
 
 // Changement de couleur de la navbar au scroll
 window.addEventListener('scroll', () => {

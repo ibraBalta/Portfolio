@@ -196,15 +196,38 @@
             </div>
         </article>
 
-        <article class="project-card coming-soon">
+        <article class="project-card">
             <div class="card-image">
-                <img src="https://via.placeholder.com/600x300/111/444?text=En+cours..." alt="Projet à venir" loading="lazy">
+                <img src="assets/quanticgp.png" alt="Quantic Grand Prix">
             </div>
             <div class="card-content">
-                <h3>Projet à venir</h3>
-                <p>D'autres projets sont en cours de développement. Revenez bientôt !</p>
+                <h3>Quantic Grand Prix (BUT-2)</h3>
+                <p>Application Full-Stack pour la gestion d'un événement F1 fictif : billetterie, activités et rôles utilisateurs.</p>
                 <div class="tech-stack">
-                    <span>...</span>
+                    <span>Vue.js</span>
+                    <span>Node.js</span>
+                    <span>Express</span>
+                    <span>MySQL</span>
+                </div>
+                <div class="card-links">
+                    <a target="_blank" href="https://github.com/SemihAslan123/QuanticGP">Voir le dépot github du projet</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card">
+            <div class="card-image">
+                <img src="assets/4mation.jpg" alt="Jeu 4mation">
+            </div>
+            <div class="card-content">
+                <h3>Jeu 4mation (BUT-1)</h3>
+                <p>Conception et développement d'un jeu de stratégie avec interface graphique desktop.</p>
+                <div class="tech-stack">
+                    <span>Java</span>
+                    <span>JavaFX</span>
+                </div>
+                <div class="card-links">
+                    <a target="_blank" href="https://github.com/ibraBalta/4MationCook/tree/main">Voir le dépot github du projet</a>
                 </div>
             </div>
         </article>
@@ -219,7 +242,7 @@
 
     <div class="contact-wrapper">
 
-        <form class="contact-form" action="#" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/mpwggnqa" method="POST">
 
             <div class="form-group-row">
                 <div class="form-group">
@@ -259,6 +282,9 @@
                     En soumettant ce formulaire, j'accepte que mes données personnelles soient utilisées pour me recontacter. Aucun autre traitement ne sera effectué avec mes informations.
                 </label>
             </div>
+
+            <!-- Redirection vers la page de remerciement en français -->
+            <input type="hidden" name="_next" value="https://formspree.io/thanks?language=fr">
 
             <button type="submit" class="btn-primary full-width">Envoyer le message</button>
         </form>
