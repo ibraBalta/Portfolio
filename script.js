@@ -37,39 +37,51 @@ const navSlide = () => {
 // Lancer la fonction
 navSlide();
 
-// Gestion basique de l'envoi du formulaire (pour éviter le rechargement de page par défaut)
 const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // empêche le rechargement par défaut
+        e.preventDefault();
 
         const formData = new FormData(contactForm);
+
+        // Vérifier email avant envoi
+        const email = formData.get('email');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Veuillez entrer une adresse email valide.");
+            return;
+        }
 
         try {
             const response = await fetch(contactForm.action, {
                 method: contactForm.method,
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             });
 
-            if (response.ok) {
-                // Vider tous les champs du formulaire
-                contactForm.reset();
+            const result = await response.json();
 
-                // Rediriger vers la page de remerciement
+            if (response.ok) {
+                contactForm.reset();
                 window.location.href = "https://formspree.io/thanks?language=fr";
             } else {
-                alert("Oups ! Une erreur est survenue. Veuillez réessayer.");
+                console.error(result);
+                let errorMessage = "Une erreur est survenue. Veuillez réessayer.";
+                if (result.errors) {
+                    errorMessage = result.errors.map(err => err.message).join("\n");
+                } else if (result.error) {
+                    errorMessage = result.error;
+                }
+                alert(errorMessage);
             }
-
         } catch (error) {
-            alert("Oups ! Une erreur est survenue. Veuillez réessayer.");
+            console.error(error);
+            alert("Une erreur réseau est survenue. Veuillez réessayer.");
         }
     });
 }
+
 
 
 // Changement de couleur de la navbar au scroll
