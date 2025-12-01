@@ -3,54 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet Airbnb Assistant IA | Ibrahim Balta</title>
+    <title>Assistant Airbnb Intelligent | Ibrahim Balta</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Styles spécifiques pour les schémas sans images */
-        .process-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-        }
-        .process-step {
-            background: #1e1e24;
-            padding: 15px 25px;
-            border-radius: 8px;
-            border-left: 3px solid #00d4ff;
-            text-align: center;
-            font-weight: 600;
-            color: #fff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            flex: 1;
-            min-width: 140px;
-        }
-        .process-arrow {
-            color: #ffd700;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .result-box {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(30, 30, 36, 0.8));
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #00d4ff;
-            margin: 20px 0;
-        }
-        .result-title {
-            color: #00d4ff;
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-    </style>
 </head>
 <body>
 
@@ -71,13 +26,14 @@
 
 <section class="project-hero">
     <div class="hero-container">
-        <span class="project-tag">Projet Universitaire • Data Science & IA</span>
-        <h1 class="glitch-text">Assistant Airbnb IA</h1>
-        <p class="project-subtitle">Application hybride d'IA Générative et Prédictive pour l'analyse immobilière</p>
+        <span class="project-tag">Projet Universitaire • Intelligence Artificielle</span>
+        <h1 class="glitch-text">Assistant Airbnb</h1>
+        <p class="project-subtitle">Plateforme IA prédictive et générative pour la valorisation immobilière</p>
         <div class="tech-badges">
-            <span class="badge">Python Streamlit</span>
+            <span class="badge">Python</span>
+            <span class="badge">Streamlit</span>
             <span class="badge">CatBoost</span>
-            <span class="badge">Google Places API</span>
+            <span class="badge">Machine Learning</span>
             <span class="badge">GenAI</span>
         </div>
     </div>
@@ -88,95 +44,77 @@
     <div class="toc-card">
         <h3>Sommaire du rapport</h3>
         <ul>
-            <li><a href="#section-genai">01. IA Générative : Création de contenu & Tourisme</a></li>
-            <li><a href="#section-ml">02. IA Prédictive : Estimation des prix (Machine Learning)</a></li>
+            <li><a href="#section-objectifs">01. Objectifs du projet</a></li>
+            <li><a href="#section-predictive">02. L'approche Prédictive (Pricing)</a></li>
+            <li><a href="#section-generative">03. L'approche Générative (Contenu)</a></li>
+            <li><a href="#section-tech">04. Intégration Technique</a></li>
         </ul>
     </div>
 
     <main class="article-content">
 
-        <p class="intro-text">Ce projet universitaire vise à développer une application complète d'aide à la décision pour les hôtes Airbnb. Baptisée <strong>Assistant Airbnb IA</strong>, cette plateforme combine deux approches de l'intelligence artificielle : une IA générative pour la rédaction de contenu marketing et touristique, et une IA prédictive pour l'estimation tarifaire des biens.</p>
+        <p class="intro-text">Ce projet vise à concevoir un assistant intelligent capable d’analyser et de valoriser les annonces Airbnb. Il repose sur une approche hybride combinant deux types d’Intelligence Artificielle : une IA prédictive pour estimer avec précision les prix des logements, et une IA générative pour enrichir l’expérience utilisateur via des descriptions marketing et des recommandations personnalisées.</p>
 
-        <p>L'application, développée sous <strong>Streamlit</strong>, permet d'analyser un logement spécifique, d'enrichir sa description grâce à des données géolocalisées (API Google Places) et d'obtenir une prédiction de prix fiable via un modèle <strong>CatBoost Regressor</strong>. Ce projet hybride lie les compétences de Data Science (nettoyage, feature engineering, modélisation) avec le développement web et l'intégration d'APIs.</p>
-
-        <hr class="divider">
-
-        <h2 id="section-genai">IA Générative : Création de contenu & Tourisme</h2>
-
-        <h3>Pipeline de données : De la géolocalisation au texte</h3>
-
-        <p>La première brique du projet transforme des données techniques brutes en contenu rédactionnel attractif. L'utilisateur sélectionne un logement et obtient instantanément une description marketing optimisée et un guide touristique local. J'ai conçu un pipeline qui connecte les caractéristiques du logement à l'API <strong>Google Places</strong> pour récupérer les points d'intérêt (restaurants, musées) et nourrir un modèle de langage.</p>
-
-        <div class="process-container">
-            <div class="process-step">Input Utilisateur<br><span style="font-size:0.8em; color:#aaa;">(Quartier, Type)</span></div>
-            <div class="process-arrow">→</div>
-            <div class="process-step">API Google<br><span style="font-size:0.8em; color:#aaa;">(Lieux touristiques)</span></div>
-            <div class="process-arrow">→</div>
-            <div class="process-step">Prompt Engineering<br><span style="font-size:0.8em; color:#aaa;">(Structuration)</span></div>
-            <div class="process-arrow">→</div>
-            <div class="process-step" style="border-left-color: #ffd700;">Génération<br><span style="font-size:0.8em; color:#aaa;">(Planning & Desc.)</span></div>
-        </div>
-        <figcaption>Figure 1 – Flux de données de l'IA Générative : l'application orchestre les appels API et le modèle de langage pour produire du contenu contextuel.</figcaption>
-
-        <p>Voici un extrait du code Python gérant la récupération des lieux touristiques via l'API, étape indispensable pour éviter les "hallucinations" de l'IA en lui fournissant des lieux réels :</p>
-
-        <pre><code>def get_nearby_places(lat, lng, radius=1000, type_place="tourist_attraction"):
-    endpoint = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-    params = {
-        "location": f"{lat},{lng}",
-        "radius": radius,
-        "key": GOOGLE_API_KEY,
-        "language": "fr"
-    }
-    response = requests.get(endpoint, params=params)
-
-    # Extraction et nettoyage des données pertinentes
-    places = []
-    for place in response.json().get('results', [])[:5]:
-        places.append({
-            "nom": place.get("name"),
-            "rating": place.get("rating", "N/A"),
-            "adresse": place.get("vicinity")
-        })
-    return places</code></pre>
+        <p>L’ambition est de fournir un outil complet qui aide à la fois les propriétaires à positionner leur bien sur le marché et les voyageurs à mieux projeter leur séjour grâce à des suggestions contextualisées.</p>
 
         <hr class="divider">
 
-        <h2 id="section-ml">IA Prédictive : Estimation des prix (Machine Learning)</h2>
+        <h2 id="section-objectifs">Objectifs du projet</h2>
 
-        <h3>Modélisation avec CatBoost Regressor</h3>
-        <p>La seconde composante majeure est l'estimation du prix de la nuitée. J'ai opté pour l'algorithme <strong>CatBoost</strong> (Categorical Boosting), particulièrement performant sur les données tabulaires contenant de nombreuses variables catégorielles comme le quartier ou le type de chambre.</p>
+        <p>Le développement de cet assistant s'articule autour de trois axes fonctionnels majeurs, répondant aux besoins concrets du marché de la location courte durée :</p>
 
-        <p>Le Feature Engineering a été une étape clé : extraction de mots-clés, calcul de l'ancienneté, et transformation logarithmique de la cible (Log-Price) pour stabiliser la variance. L'interface permet ensuite d'ajuster les hyperparamètres en temps réel.</p>
+        <ul>
+            <li><strong>Estimation financière réaliste :</strong> Fournir un prix juste par nuit pour chaque logement. Cette estimation ne se base pas sur une intuition, mais sur une analyse rigoureuse des caractéristiques du bien (type, équipements, localisation précise) et des retours clients (avis, notes).</li>
+            <li><strong>Rédaction automatisée :</strong> Générer automatiquement des descriptions marketing détaillées et attrayantes, libérant ainsi le propriétaire de la tâche de rédaction tout en assurant un ton professionnel et vendeur.</li>
+            <li><strong>Personnalisation de l'expérience voyageur :</strong> Proposer des idées de visites et des plannings sur mesure, basés sur les lieux touristiques réels et les commodités situées à proximité immédiate du logement.</li>
+        </ul>
 
-        <pre><code># Configuration dynamique du modèle via Streamlit
-learning_rate = st.sidebar.slider("Taux d'apprentissage", 0.01, 0.3, 0.1)
-depth = st.sidebar.slider("Profondeur de l'arbre", 4, 10, 6)
+        <hr class="divider">
 
-model = CatBoostRegressor(
-    iterations=500,
-    learning_rate=learning_rate,
-    depth=depth,
-    loss_function='RMSE'
-)
+        <h2 id="section-predictive">IA Prédictive : Modélisation des prix</h2>
 
-# Entraînement et Prédiction
-model.fit(X_train, y_train, cat_features=cat_cols)
-preds = model.predict(X_test)</code></pre>
+        <h3>Le choix de l'algorithme CatBoost</h3>
+        <p>Pour la partie estimation tarifaire, le cœur du système repose sur un modèle <strong>CatBoost</strong>. Il s'agit d'un algorithme de <em>gradient boosting</em> spécifiquement choisi pour sa capacité à traiter efficacement des données hétérogènes. Dans le contexte de l'immobilier, les données sont variées : elles peuvent être numériques (nombre de chambres, latitude/longitude) ou catégorielles (type de logement, présence de WiFi ou de climatisation).</p>
 
-        <div class="result-box">
-            <div class="result-title">⚡ Résultats et Métriques</div>
-            <p>Grâce à l'optimisation des hyperparamètres via l'interface, le modèle final atteint des performances robustes sur le jeu de test :</p>
-            <ul style="list-style: none; padding-left: 0;">
-                <li><strong>RMSE (Erreur Quadratique Moyenne) :</strong> 0.24 (sur échelle log)</li>
-                <li><strong>R² (Coefficient de détermination) :</strong> 0.78</li>
-                <li><strong>Variables clés :</strong> Localisation (Quartier), Type de logement, Capacité d'accueil.</li>
-            </ul>
-        </div>
-        <figcaption>Figure 2 – Synthèse des performances du modèle prédictif affichées dans l'application.</figcaption>
+        <h3>Traitement des données et performance</h3>
+        <p>La fiabilité du modèle dépend de la qualité des données en entrée. Un travail important de prétraitement a été réalisé : nettoyage des bases de données, gestion intelligente des valeurs manquantes et filtrage des <em>outliers</em> (valeurs aberrantes) pour stabiliser l'apprentissage. Le modèle utilise également l'historique du propriétaire et les statistiques d'avis pour affiner sa prédiction.</p>
+
+        <p>Techniquement, le modèle prédit une valeur log-transformée du prix, qui est ensuite reconvertie pour obtenir un montant réaliste par nuit. La performance de cette estimation est validée par des métriques statistiques standards telles que le RMSE (Root Mean Square Error) et le coefficient de détermination R².</p>
+
+        <hr class="divider">
+
+        <h2 id="section-generative">IA Générative : Enrichissement de contenu</h2>
+
+        <h3>Utilisation de Mistral AI</h3>
+        <p>L’IA générative du projet est propulsée par <strong>Mistral AI</strong>, choisie pour sa capacité à produire du contenu textuel fluide et naturel en français. Contrairement à une simple concaténation de phrases, le modèle rédige véritablement du contenu à forte valeur ajoutée.</p>
+
+        <h3>Scénarios d'usage</h3>
+        <p>L'intelligence artificielle intervient à plusieurs niveaux pour transformer des données brutes en texte engageant :</p>
+        <ul>
+            <li><strong>Descriptions Marketing :</strong> L'IA analyse les équipements (piscine, vue, cuisine équipée) et les points d'intérêt locaux pour rédiger une présentation qui met en avant les atouts majeurs du bien.</li>
+            <li><strong>Suggestions Thématiques :</strong> En se connectant aux données géographiques, l'assistant propose des idées de sorties ciblées (musées, parcs, restaurants) adaptées au quartier.</li>
+            <li><strong>Plannings de Séjour :</strong> L'outil est capable de créer des itinéraires jour par jour, suggérant des activités variées et logiques par rapport à la localisation du logement, offrant ainsi un véritable service de conciergerie numérique.</li>
+        </ul>
+
+        <p>Cette approche permet de fusionner des données structurées (prix, caractéristiques techniques) avec des données contextuelles (points d'intérêt, ambiance du quartier) pour offrir une expérience utilisateur complète.</p>
+
+        <hr class="divider">
+
+        <h2 id="section-tech">Aspects techniques et intégration</h2>
+
+        <p>L'architecture technique du projet a été pensée pour être modulaire et interactive. L'interface utilisateur est développée avec le framework <strong>Streamlit</strong>, permettant une visualisation rapide et fluide des résultats.</p>
+
+        <h3>Orchestration des APIs</h3>
+        <p>Le système agit comme un orchestrateur entre plusieurs services externes :</p>
+        <ul>
+            <li><strong>Google Maps API :</strong> Sollicitée pour récupérer en temps réel les points d'intérêt, les transports et les commodités autour du logement analysé.</li>
+            <li><strong>Mistral AI API :</strong> Utilisée pour toute la génération de contenu textuel et la structuration des recommandations.</li>
+        </ul>
+
+        <p>Le pipeline de traitement suit une logique linéaire : sélection du logement par l'utilisateur → prédiction du prix via CatBoost → génération des textes et recommandations via Mistral → affichage final. Des fonctionnalités avancées ont été intégrées pour optimiser les performances, notamment un système de cache pour limiter les appels répétitifs aux API et une extraction automatique des équipements clés.</p>
 
         <div class="highlight-box">
-            <strong>Bilan Technique :</strong> Ce projet illustre la convergence entre <strong>Data Engineering</strong> (API, nettoyage), <strong>Data Science</strong> (modélisation prédictive) et <strong>Développement Web</strong>. J'ai appris à déployer un modèle de ML dans une application interactive, rendant les prédictions intelligibles pour l'utilisateur, tout en enrichissant l'expérience grâce à la génération de texte automatisée.
+            <strong>Valeur Ajoutée du Projet :</strong> Ce travail démontre concrètement comment l'hybridation des modèles prédictifs et génératifs peut transformer une simple consultation de données en une expérience utilisateur riche. Il illustre l'importance de l'intégration intelligente de sources externes pour créer un assistant capable d'aider simultanément les propriétaires (valorisation du bien) et les voyageurs (planification du séjour).
         </div>
 
         <div class="navigation-footer">
