@@ -822,3 +822,51 @@ figure img {
     text-align: center;
     width: 60px; /* même que Devicon */
 }
+
+/* --- BOUTON RETOUR (Page Projet) --- */
+
+.navigation-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;    /* Espace après le contenu de l'article */
+    margin-bottom: 40px; /* Espace avant le footer */
+}
+
+.btn-return {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 35px;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-family: var(--title-font);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px; /* Forme arrondie "pillule" différente des autres boutons */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.05);
+}
+
+.btn-return:hover {
+    background: rgba(0, 212, 255, 0.1); /* Légère teinte cyan au survol */
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.4); /* Glow néon plus fort */
+    transform: translateY(-3px);
+    color: white;
+    border-color: #fff;
+}
+
+.btn-return .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Animation : la flèche bouge vers la gauche au survol */
+.btn-return:hover .arrow {
+    transform: translateX(-5px);
+}
