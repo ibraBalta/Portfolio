@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet XPLAN | Ibrahim Balta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="header">
+    <div class="logo"><a href="index.html">IBRAHIM<span class="dot">.</span></a></div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html" class="btn-nav">← Retour Portfolio</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+</header>
+
+<section class="project-hero">
+    <div class="hero-container">
+        <span class="project-tag">Stage S6 • Laboratoire CIAD (UTBM)</span>
+        <h1 class="glitch-text">XPLAN</h1>
+        <p class="project-subtitle">Pipeline d'extraction sémantique et jumeau numérique de rapports nucléaires</p>
+        <div class="tech-badges">
+            <span class="badge">Python 3.11</span>
+            <span class="badge">Gemma 3 (Ollama)</span>
+            <span class="badge">Neo4j</span>
+            <span class="badge">LangExtract</span>
+            <span class="badge">Cypher</span>
+        </div>
+    </div>
+</section>
+
+<div class="reading-container">
+
+    <div class="toc-card">
+        <h3>Sommaire du projet</h3>
+        <ul>
+            <li><a href="#section-contexte">01. Contexte & Objectifs</a></li>
+            <li><a href="#section-archi">02. Architecture du Pipeline</a></li>
+            <li><a href="#section-extractions">03. Extraction Sémantique & Modélisation</a></li>
+        </ul>
+    </div>
+
+    <main class="article-content">
+
+        <p class="intro-text">Du 9 février au 3 juillet 2026, j’ai effectué mon stage de fin d’études de BUT Informatique au sein du laboratoire <strong>CIAD</strong> (Connaissance et Intelligence Artificielle Distribuée). Ma mission s'est inscrite dans le cadre du projet <strong>XPLAN</strong>, visant à automatiser la numérisation et l’interconnexion de rapports techniques complexes du domaine nucléaire.</p>
+
+        <p>Face à la masse critique de documents denses (instructions de conduite), l'indexation manuelle s'avère fastidieuse et sujette aux erreurs. J'ai conçu et développé un pipeline de traitement complet, capable de transformer des fichiers bruts issus de la reconnaissance optique de caractères (OCR) en un réseau de connaissances dynamique, cohérent et directement exploitable.</p>
+
+        <hr class="divider">
+
+        <h2 id="section-contexte">01. Contexte & Objectifs</h2>
+        <p>L'application s'appuie sur trois piliers fonctionnels majeurs dictés par les contraintes industrielles de confidentialité et de souveraineté du secteur de l'énergie :</p>
+        <ul>
+            <li><strong>Extraction déterministe :</strong> Isolation automatique des grilles, checklists et tableaux techniques pour valider les équipements directement face à l'inventaire officiel.</li>
+            <li><strong>Analyse linguistique locale :</strong> Intégration du LLM local <code>Gemma 3:12b</code> pour analyser le langage naturel des consignes sans fuite d'informations vers l'extérieur.</li>
+            <li><strong>Réseau relationnel :</strong> Modélisation et injection finale des dépendances (Documents, Tâches, Équipements) dans une base de données graphe.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <h2 id="section-archi">02. Architecture du Pipeline</h2>
+        <p>J'ai implémenté une architecture robuste et modulaire structurée en trois phases séquentielles :</p>
+
+        <h3>Phase 1 : Extraction initiale et normalisation</h3>
+        <p>Cette phase traite les fichiers textuels bruts de l'OCR. Pour gérer la forte diversité documentaire, j'ai conçu un éventail de <strong>26 parseurs Python spécifiques</strong>, orchestrés par un script d'aiguillage amont. Ces scripts appliquent des algorithmes d'auto-correction (remise en ordre spatiale par coordonnées de boîte de délimitation, gestion de la continuité des tableaux) pour générer un fichier JSON pivot standardisé.</p>
+
+        <h3>Phase 2 : Structuration métier (Approche Hybride)</h3>
+        <p>La structuration s'articule autour de deux volets complémentaires :</p>
+        <ul>
+            <li><strong>Volet A (Déterminisite) :</strong> Extraction des tableaux physiques et alignement dynamique des lignes en cas de décalage de colonnes, suivi d'une confrontation directe avec l'inventaire technique.</li>
+            <li><strong>Volet B (Probabiliste) :</strong> Utilisation d'un serveur local <code>Ollama</code> faisant tourner le modèle <code>Gemma 3:12b</code>. Pour garantir un format JSON strict, l'interopérabilité est gérée via la bibliothèque <code>langextract</code>. Le mode <em>thinking</em> du modèle a été volontairement désactivé pour éviter toute altération du format de sortie textuel brut.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <h2 id="section-extractions">03. Extraction Sémantique & Modélisation</h2>
+
+        <h3>Phase 3 : Modélisation et injection Neo4j</h3>
+        <p>Les données structurées et qualifiées sont transformées en nœuds et relations au sein d'une base de données graphe <strong>Neo4j</strong> à l'aide de requêtes <code>Cypher</code> transactionnelles. Ce modèle cartographie les interconnexions entre les documents d’origine, les tâches de maintenance (<code>Task</code>), et les équipements matériels réels (<code>Equipment</code>).</p>
+
+        <p>Pour parfaire l'intégrité du graphe, j'ai développé des scripts autonomes de post-nettoyage et de refactoring. Ils effectuent des corrections de tranches géographiques, propagent la traçabilité documentaire (provenance) par lots de 5 000 entités, et purgent l'ensemble des métadonnées de parsing obsolètes pour optimiser les performances de production.</p>
+
+        <div class="highlight-box">
+            <strong>Bilan - BUT 3 :</strong> Ce stage de 14 semaines m'a permis de valider avec succès les compétences phares de mon parcours. J'ai surmonté d'importants défis techniques : manipulation avancée de graphes complexes, traitement massif de données (validé sur 277 documents industriels), et intégration maîtrisée d'intelligences artificielles locales conformes aux contraintes réglementaires d'étanchéité des données.
+        </div>
+
+        <div class="navigation-footer">
+            <a href="index.html#projects" class="btn-return">
+                <span class="arrow">←</span> Retour à la liste des projets
+            </a>
+        </div>
+
+    </main>
+</div>
+
+<footer>
+    <p>&copy; 2026 Ibrahim Balta. <a href="#">Haut de page ↑</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
